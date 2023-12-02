@@ -27,9 +27,6 @@ Once you have your swarm, in this directory run:
 ```shell
 docker stack deploy --compose-file docker-stack.yml vote
 ```
-
-```
-
 ## Architecture
 
 ![Architecture diagram](architecture.excalidraw.png)
