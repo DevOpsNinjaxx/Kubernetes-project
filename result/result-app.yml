@@ -1,0 +1,25 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result-app
+spec:
+  replicas: 3  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: result
+  template:
+    metadata:
+      labels:
+        app: result
+    spec:
+      containers:
+      - name: result-app
+        image: node:18-slim
+        ports:
+        - containerPort: 80
+        command: ["/usr/bin/tini", "--"]
+        args: ["node", "server.js"]
+        env:
+        - name: PORT
+          value: "80"

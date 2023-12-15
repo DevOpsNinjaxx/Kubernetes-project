@@ -1,0 +1,24 @@
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote-deployment
+spec:
+  replicas: 3  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-app-container
+        image: python:3.11-slim 
+        ports:
+        - containerPort: 80  
+        # Add any environment variables if required
+        env:
+        - name: FLASK_ENV
